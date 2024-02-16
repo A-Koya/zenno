@@ -1,0 +1,18 @@
+services:
+  dev:
+    build:
+      context: .
+      target: dev
+      dockerfile: ./docker/next/Dockerfile
+    volumes:
+      - type: bind
+        source: ./next
+        target: /src
+      - type: volumes
+        source: node_modules
+        target: /src/node_modules
+    ports:
+      - 3000:3000
+    tty: true
+    stdin_open: true
+volumes: node_modules

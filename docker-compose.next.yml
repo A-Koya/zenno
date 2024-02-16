@@ -1,0 +1,21 @@
+services:
+  base:
+    build:
+      context: .
+      target: base
+      dockerfile: ./docker/next/Dockerfile
+    image: node_base
+    volumes:
+      - type: bind
+        source: ./next
+        target: /src
+    entrypoint: npx -y create-next-app .
+    command: --ts --tailwind --eslint --app --nosrc-dir --import-alias @/*
+  installer:
+    image: node_base
+    volumes:
+      - type: bind
+        source: ./next
+        target: /src
+    entrypoint: npm install
+    command: axios
