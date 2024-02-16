@@ -10,7 +10,7 @@ services:
         source: ./next
         target: /src
     entrypoint: npx -y create-next-app .
-    command: --ts --tailwind --eslint --app --nosrc-dir --import-alias @/*
+    command: --ts --tailwind --eslint --app --no-src-dir --import-alias @/*
   installer:
     image: node_base
     volumes:
