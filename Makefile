@@ -4,4 +4,5 @@ down:
 	docker-compose down
 build:
 	docker-compose build
-	
+exec-next:
+	docker container exec -it next bash

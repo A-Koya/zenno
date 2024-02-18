@@ -1,5 +1,6 @@
 services:
-  dev:
+  next:
+    container_name: next
     build:
       context: .
       target: dev
@@ -8,7 +9,7 @@ services:
       - type: bind
         source: ./next
         target: /src
-      - type: volumes
+      - type: volume
         source: node_modules
         target: /src/node_modules
     ports:
@@ -18,4 +19,7 @@ services:
     environment:
       - WATCHPACK_POLLING=true
 
-volumes: node_modules
+volumes:
+  node_modules:
+
+
