@@ -18,4 +18,4 @@ services:
         source: ./next
         target: /src
     entrypoint: npm install
-    command: axios
+    command: axios react-feather
