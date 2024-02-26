@@ -2,6 +2,7 @@ import "@/app/globals.css"
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google"
 import {cn} from "@/lib/utils.ts"
+import {BaseHeader} from "@/app/_component/tmp/BaseHeader"
 
 export const metadata: Metadata = {
   title: "全知全農",
@@ -25,7 +26,10 @@ export default function RootLayout({
           "min-h-screen bg-background font-sans antialiased",
           fontSans.variable
         )}
-      >{children}</body>
+      >
+      <BaseHeader/>
+      {children}
+      </body>
     </html>
   );
 }

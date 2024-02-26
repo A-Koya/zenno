@@ -1,6 +1,6 @@
 import {BaseHeader} from "./BaseHeader"
 export default{
-    id:'1',
+    id:'BaseHeader',
     component: BaseHeader,
     title: 'BaseHeader',
 }
