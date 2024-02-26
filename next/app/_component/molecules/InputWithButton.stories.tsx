@@ -1,7 +1,7 @@
 import {InputWithButton} from "./InputWithButton"
 
 export default{
-  id:'1',
+  id:'Input With Button',
   component: InputWithButton,
   title: 'InputWithButton'
 }
