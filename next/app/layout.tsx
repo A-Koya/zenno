@@ -1,13 +1,16 @@
+import "@/app/globals.css"
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Inter as FontSans } from "next/font/google"
+import {cn} from "@/lib/utils.ts"
 
 export const metadata: Metadata = {
   title: "全知全農",
   description: "全知全農は農業に関する質問や回答を集約したサイトです。",
 };
+export const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 export default function RootLayout({
   children,
@@ -16,7 +19,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={inter.className}>{children}</body>
+      <head/>
+      <body 
+      className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
+      >{children}</body>
     </html>
   );
 }
