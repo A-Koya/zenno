@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from 'next/image'
 import {SearchWithButton} from '@/app/_component/molecules/SearchWithButton'
 import {LoginButton} from '@/app/_component/atoms/buttons/LoginButton'
+import {AddUserButton} from '@/app/_component/atoms/buttons/AddUserButton'
 
 
 export const BaseHeader = () => {
@@ -32,6 +33,7 @@ export const BaseHeader = () => {
         <nav className="flex items-center space-x-2">
         <SearchWithButton/>
         <LoginButton />
+        <AddUserButton />
         </nav>
       </div>
     </header>
