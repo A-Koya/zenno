@@ -1,11 +1,10 @@
 export type questionCardType = {
-    name: string,
-    date: date,
-    title: string,
-    content: string,
-    tags: string[],
-    good: number,
-    post: number,
+  cardLink: string
+} & avaterDateType & mainContentsType & ReactionsType
+export type avaterDateType = {
+  imageUrl: string,
+  name: string,
+  date: string,
 }
 export type mainContentsType = {
   title: string,
@@ -13,12 +12,6 @@ export type mainContentsType = {
   tags: string[],
 }
 export type ReactionsType = {
-    good: number,
-    post: number,
-}
-export type avaterDateType = {
-    imageUrl: string,
-    alt:string,
-    name: string,
-    date: date,
+  good: number,
+  post: number,
 }
