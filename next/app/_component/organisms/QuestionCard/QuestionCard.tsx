@@ -4,44 +4,25 @@ import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card"
-import {ThumbsUp} from 'react-feather'
-import {Inbox} from 'react-feather'
-import {AvatarIcon} from '../../atoms/avater/AvatarIcon'
+import { AvaterDate } from '../../molecules/cards/AvaterDate';
+import { Reactions } from '../../molecules/cards/Reactions';
+import { MainContents } from '../../molecules/cards/MainContents';
+import { questionCardType}from '../../../../lib/types/questionCardType';
 
 export function QuestionCard() {
+  const imageUrl:string = "https://github.com/shadcn.png"
+  const title:string = "トマト栽培のコツを教えて"
+  const content:string = "私は自宅でトマトを栽培しており..."
+  const tags:string[] = ["初心者","初心者","初心者"]
   return (
-    <Card className="w-[500px]">
+    <Card className="w-1/2">
       <CardHeader className="flex flex-col space-y-2">
-        <div className="flex items-center space-x-2">
-          <AvatarIcon/>
-          <div>
-            <div>kebin</div>
-            <div>2024-2-3</div>
-          </div>
-        </div>
-        <div className="font-bold text-xl">トマト栽培のコツを教えて</div>
-        <CardDescription>私は自宅でトマトを栽培しており...</CardDescription>
-          <CardDescription className="flex items-center space-x-2">
-            <div className="bg-gray-200 rounded-sm p-1 text-sm">初心者</div>
-            <div className="bg-gray-200 rounded-sm p-1 text-sm">初心者</div>
-            <div className="bg-gray-200 rounded-sm p-1 text-sm">初心者</div>
-          </CardDescription>
+        <AvaterDate imageUrl={imageUrl} alt="イメージ画像" name="kebin" date="2014-1-1"/>
+        <MainContents title={title} content={content} tags={tags}/>
+        <Reactions good={12} post={12}/> 
       </CardHeader>
-      <div className="flex space-x-6 container">
-        <div className="flex item-center space-x-2">
-          <ThumbsUp className="w-5 h-5 text-yellow-500"/>
-          <div>12</div>
-        </div>
-        <div className="flex item-center space-x-2">
-          <Inbox className="w-5 h-5"/>
-          <div>12</div>
-        </div>
-      </div>
     </Card>
   )
 }

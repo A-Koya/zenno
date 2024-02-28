@@ -1,14 +1,12 @@
 import {
   Avatar,
-  AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar"
 
-export function AvatarIcon() {
+export function AvatarIcon({imageUrl,alt}:{imageUrl:string,alt:string}) {
   return (
     <Avatar>
-      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-      <AvatarFallback>CN</AvatarFallback>
+      <AvatarImage src={imageUrl} alt={alt} />
     </Avatar>
   )
 }
