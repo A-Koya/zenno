@@ -15,6 +15,7 @@ services:
     ports:
       - 3000:3000
       - 6006:6006
+      - 3100:3100
     tty: true
     stdin_open: true
     environment:

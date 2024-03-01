@@ -1,5 +1,5 @@
 import { CardList } from "./CardList";
-import { cardMock } from '../../../../lib/mockData';
+import { cardMock } from '../../../../lib/mocks/mockData';
 
 export default {
     id: 'CardList',

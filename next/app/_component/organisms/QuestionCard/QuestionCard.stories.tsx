@@ -1,4 +1,4 @@
-import { cardMock } from '@/lib/mockData'
+import { cardMock } from '@/lib/mocks/mockData'
 import { QuestionCard } from './QuestionCard'
 export default {
     id: 'QuestionCard',

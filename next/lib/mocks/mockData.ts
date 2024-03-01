@@ -1,4 +1,4 @@
-import { questionCardType } from "./types/questionCardType";
+import { questionCardType } from "../types/questionCardType";
 
 export const cardMock: questionCardType[] = [
     {

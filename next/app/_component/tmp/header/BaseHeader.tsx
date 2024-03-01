@@ -26,17 +26,19 @@ export const BaseHeader = () => {
           <FunctionButton name="新規会員登録" />
         </nav>
       </div>
-      <nav className="container flex space-x-8 bg-green-200 py-2">
-        <Link href="/" className='font-semibold'>
-          <div>新着</div>
-        </Link>
-        <Link href="/aaa" className='font-semibold opacity-60'>
-          <div>いいね順</div>
-        </Link>
-        <Link href="/aaa" className='font-semibold opacity-60'>
-          <div>タグ検索</div>
-        </Link>
-      </nav>
+      <div className="bg-green-200">
+        <nav className="container flex space-x-8 py-2">
+          <Link href="/" className='font-semibold'>
+            <div>新着</div>
+          </Link>
+          <Link href="/aaa" className='font-semibold opacity-60'>
+            <div>いいね順</div>
+          </Link>
+          <Link href="/aaa" className='font-semibold opacity-60'>
+            <div>タグ検索</div>
+          </Link>
+        </nav>
+      </div>
     </header>
   )
 }
