@@ -2,6 +2,7 @@ import { questionCardType } from "./types/questionCardType";
 
 export const cardMock: questionCardType[] = [
     {
+        id: 1,
         cardLink: "localhost://8080",
         imageUrl: "https://github.com/shadcn.png",
         name: "kebin",
@@ -13,6 +14,7 @@ export const cardMock: questionCardType[] = [
         post: 12,
     },
     {
+        id: 2,
         cardLink: "localhost://8080",
         imageUrl: "https://github.com/shadcn.png",
         name: "nick",

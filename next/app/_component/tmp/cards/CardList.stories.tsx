@@ -1,4 +1,3 @@
-import { questionCardType } from "@/lib/types/questionCardType";
 import { CardList } from "./CardList";
 import { cardMock } from '../../../../lib/mockData';
 

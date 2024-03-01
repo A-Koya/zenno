@@ -19,3 +19,11 @@ services:
         target: /src
     entrypoint: npm install
     command: axios react-feather
+  develop:
+    image: node_base
+    volumes:
+      - type: bind
+        source: ./next
+        target: /src
+    entrypoint: npm install
+    command: json-server --dev

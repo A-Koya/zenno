@@ -1,4 +1,5 @@
 export type questionCardType = {
+  id: number,
   cardLink: string
 } & avaterDateType & mainContentsType & ReactionsType
 export type avaterDateType = {

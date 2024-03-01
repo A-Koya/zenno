@@ -4,10 +4,8 @@ import { questionCardType } from '@/lib/types/questionCardType';
 
 export const CardList = ({ cardDatas }: { cardDatas: questionCardType[] }) => {
   return (
-    <div className="container flex flex-col space-y-4">
-      {cardDatas.map((Data) => (
-        <QuestionCard {...Data} />
-      ))}
-    </div>
+    <ul className="container flex flex-col space-y-4">
+      {cardDatas.map((Data) => (<li key={Data.id}><QuestionCard {...Data} /></li>))}
+    </ul>
   )
 }
