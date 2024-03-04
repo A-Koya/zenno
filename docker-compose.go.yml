@@ -1,0 +1,19 @@
+services:
+  setup:
+    build:
+      context: .
+      target: base
+      dockerfile: ./docker/go/Dockerfile
+    image: go_base
+    volumes:
+      - type: bind
+        source: ./go
+        target: /src
+    command: go mod init github.com/A-Koya/zenno
+  develop:
+    image: go_base
+    volumes:
+      - type: bind
+        source: ./go
+        target: /src
+    command:
