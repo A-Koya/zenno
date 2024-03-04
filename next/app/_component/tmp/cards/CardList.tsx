@@ -1,11 +1,18 @@
-import React from 'react'
-import { QuestionCard } from '../../organisms/questionCard/QuestionCard';
-import { questionCardType } from '@/lib/types/questionCardType';
+import { QuestionCard } from '../../organisms/QuestionCard/QuestionCard';
+import { fetchCardData } from '@/lib/functions/fetch';
 
-export const CardList = ({ cardDatas }: { cardDatas: questionCardType[] }) => {
+export const CardList = () => {
   return (
-    <ul className="container flex flex-col space-y-4">
-      {cardDatas.map((Data) => (<li key={Data.id}><QuestionCard {...Data} /></li>))}
-    </ul>
+    fetchCardData().then(cardDatas => {
+      if (cardDatas) {
+        return (
+          <ul className="container flex flex-col space-y-4">
+            {cardDatas.map((Data) => (<li key={Data.id}><QuestionCard {...Data} /></li>))}
+          </ul>
+        );
+      } else {
+        return <div>データの読み込みに失敗しました</div>;
+      }
+    })
   )
 }

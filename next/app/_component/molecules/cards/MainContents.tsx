@@ -7,11 +7,11 @@ export const MainContents = ({ title, content, tags }: mainContentsType) => {
       <div className="flex flex-col space-y-2">
         <div className="font-bold text-xl">{title}</div>
         <CardDescription>{content}</CardDescription>
-        <CardDescription className="flex items-center space-x-2">
-          {tags?.map((tag: string) => (
-            <div className="bg-gray-200 rounded-sm p-1 text-sm">{tag}</div>
+        <ul className="flex items-center space-x-2">
+          {tags?.map((tag: string, index) => (
+            <li key={index} className="bg-gray-200 rounded-sm p-1 text-sm opacity-80">{tag}</li>
           ))}
-        </CardDescription>
+        </ul>
       </div>
     </Suspense>
   )

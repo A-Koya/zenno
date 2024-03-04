@@ -1,8 +1,8 @@
 import axios, { AxiosResponse } from "axios"
-import * as dotenv from 'dotenv'
 import { questionCardType } from "../types/questionCardType"
-dotenv.config()
+
 const cardEndpoint: string | undefined = process.env.CARD_ENDPOINT
+console.log(typeof cardEndpoint)
 
 export const fetchCardData = async (): Promise<questionCardType[] | undefined> => {
     if (typeof cardEndpoint !== 'string') {
