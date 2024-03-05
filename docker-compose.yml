@@ -20,7 +20,7 @@ services:
     stdin_open: true
     environment:
       - WATCHPACK_POLLING=true
-      - CARD_ENDPOINT=http://localhost:3100/cards
+      - CARD_ENDPOINT=http://go:8080/cards
       - TZ=Asia/Tokyo
   go:
     container_name: go

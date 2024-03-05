@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios"
 import { questionCardType } from "../types/questionCardType"
 
 const cardEndpoint: string | undefined = process.env.CARD_ENDPOINT
+console.log(cardEndpoint)
 console.log(typeof cardEndpoint)
 
 export const fetchCardData = async (): Promise<questionCardType[] | undefined> => {
