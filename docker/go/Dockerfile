@@ -5,4 +5,4 @@ RUN apk update && apk add git
 FROM base as dev
 RUN apk add bash
 COPY ./go/go.mod ./go/go.sum ./
-RUN go mod download
+RUN go mod download && go mod tidy

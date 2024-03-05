@@ -10,10 +10,10 @@ services:
         source: ./go
         target: /src
     command: go mod init github.com/A-Koya/zenno
-  develop:
+  install:
     image: go_base
     volumes:
       - type: bind
         source: ./go
         target: /src
-    command:
+    command: go get -u github.com/go-chi/chi/v5

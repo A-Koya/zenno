@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"github.com/A-Koya/zenno/adapter/router"
+)
 
 func main() {
-	fmt.Println("Hello")
+	router.StartRouting()
 }
