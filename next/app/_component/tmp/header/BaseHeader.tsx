@@ -7,7 +7,7 @@ import { FunctionButton } from '@/app/_component/atoms/buttons/FunctionButton'
 
 export const BaseHeader = () => {
   return (
-    <header className="">
+    <header>
       <div className="bg-green-500 py-2 flex items-center justify-between h-14 px-2">
         <nav className="flex items-center space-x-4">
           <Link className="flex items-center space-x-2" href="/">
@@ -35,7 +35,7 @@ export const BaseHeader = () => {
             <div>いいね順</div>
           </Link>
           <Link href="/aaa" className='font-semibold opacity-60'>
-            <div>タグ検索</div>
+            <div>3カ月以内</div>
           </Link>
         </nav>
       </div>

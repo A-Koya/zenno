@@ -1,9 +1,10 @@
+import { questionCardType } from '@/lib/types/questionCardType';
 import { QuestionCard } from '../../organisms/QuestionCard/QuestionCard';
-import { fetchCardData } from '@/lib/functions/fetch';
+import { fetchData } from '@/lib/functions/fetch';
 
 export const CardList = () => {
   return (
-    fetchCardData().then(cardDatas => {
+    fetchData<questionCardType[]>(process.env.CARD_ENDPOINT).then(cardDatas => {
       if (cardDatas) {
         return (
           <ul className="container flex flex-col space-y-4">
