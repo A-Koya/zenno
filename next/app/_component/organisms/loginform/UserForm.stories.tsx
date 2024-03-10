@@ -1,8 +1,8 @@
 import { UserForm } from './UserForm'
 export default {
-    id: 'LoginForm',
+    id: 'UserForm',
     component: UserForm,
-    title: 'LoginForm',
+    title: 'UserForm',
 }
 export const Default = () => <UserForm variant='loginForm' />
 export const AddUser = () => <UserForm variant='userAddForm' />
