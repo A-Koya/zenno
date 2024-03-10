@@ -4,5 +4,5 @@ export default {
     component: UserForm,
     title: 'LoginForm',
 }
-export const Default = () => <UserForm variant='loginform' />
+export const Default = () => <UserForm variant='loginForm' />
 export const AddUser = () => <UserForm variant='userAddForm' />
