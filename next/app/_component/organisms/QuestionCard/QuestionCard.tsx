@@ -12,7 +12,7 @@ import Link from 'next/link'
 export function QuestionCard(props: questionCardType) {
   return (
     <Link href={props.cardLink}>
-      <Card className="w-1/2">
+      <Card>
         <CardHeader className="flex flex-col space-y-2">
           <AvaterDate imageUrl={props.imageUrl} name={props.name} date={props.date} />
           <MainContents title={props.title} content={props.content} tags={props.tags} />

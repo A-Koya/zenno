@@ -1,8 +1,8 @@
-import { cardMock } from '@/lib/mocks/mockData'
+import { cardsMock } from '@/lib/mocks/mockData'
 import { QuestionCard } from './QuestionCard'
 export default {
     id: 'QuestionCard',
     component: QuestionCard,
     title: 'QuestionCard',
 }
-export const Default = () => <QuestionCard {...cardMock[0]} /> 
+export const Default = () => <QuestionCard {...cardsMock[0]} /> 

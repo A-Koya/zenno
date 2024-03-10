@@ -4,7 +4,7 @@ import { fetchData } from '@/lib/functions/fetch';
 
 export const CardList = () => {
   return (
-    fetchData<questionCardType[]>(process.env.CARD_ENDPOINT).then(cardDatas => {
+    fetchData<questionCardType[]>(process.env.CARDS_TEST).then(cardDatas => {
       if (cardDatas) {
         return (
           <ul className="container flex flex-col space-y-4">

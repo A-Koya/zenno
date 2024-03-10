@@ -1,6 +1,6 @@
 import { questionCardType } from "../types/questionCardType";
 
-export const cardMock: questionCardType[] = [
+export const cardsMock: questionCardType[] = [
     {
         id: "1",
         cardLink: "localhost://8080",
@@ -25,4 +25,21 @@ export const cardMock: questionCardType[] = [
         good: 12,
         post: 12,
     }
+]
+export const tagsMock: tagType[] = [
+    {
+        id: "1",
+        name: "トマト",
+        sum: 12
+    },
+    {
+        id: "2",
+        name: "イチゴ",
+        sum: 5
+    },
+    {
+        id: "3",
+        name: "りんご",
+        sum: 18
+    },
 ]
