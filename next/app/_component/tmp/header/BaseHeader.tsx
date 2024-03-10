@@ -1,11 +1,14 @@
+'use client'
 import React from 'react'
 import Link from "next/link"
 import Image from 'next/image'
 import { SearchWithButton } from '@/app/_component/molecules/SearchWithButton'
-import { FunctionButton } from '@/app/_component/atoms/buttons/FunctionButton'
+import { Button } from '@/components/ui/button'
+import { useRouter } from 'next/navigation'
 
 
 export const BaseHeader = () => {
+  const router = useRouter()
   return (
     <header>
       <div className="bg-green-500 py-2 flex items-center justify-between h-14 px-2">
@@ -22,8 +25,8 @@ export const BaseHeader = () => {
         </nav>
         <nav className="flex items-center space-x-2">
           <SearchWithButton />
-          <FunctionButton name="ログイン" />
-          <FunctionButton name="新規会員登録" />
+          <Button variant="outline" className="font-semibold" onClick={() => router.push('/login')}>ログイン</Button>
+          <Button variant="outline" className="font-semibold" onClick={() => router.push('/userAdd')}>新規会員登録</Button>
         </nav>
       </div>
       <div className="bg-green-200">
