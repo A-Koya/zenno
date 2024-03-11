@@ -50,5 +50,10 @@
             "sum": 18
         }
     ],
-    "empty": []
+    "empty": [],
+    "userInfo": {
+        "id": "1",
+        "name": "ken",
+        "imageUrl": "https://github.com/shadcn.png"
+    }
 }

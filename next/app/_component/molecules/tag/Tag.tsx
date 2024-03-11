@@ -3,6 +3,7 @@ import {
     Card,
 } from "@/components/ui/card"
 import { Hash } from "react-feather"
+import { tagType } from '@/lib/types/tagType'
 
 export const Tag = ({ name, sum }: tagType) => {
     return (

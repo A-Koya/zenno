@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 import { SearchWithButton } from '../../molecules/SearchWithButton';
 import { Tag } from '../../molecules/tag/Tag';
 import { fetchData } from "@/lib/functions/fetch";
+import { tagType } from "@/lib/types/tagType";
 
 export function SearchTags() {
     const [duration, setDuration] = useState<'week' | 'month'>('week')
@@ -18,7 +19,7 @@ export function SearchTags() {
         const fetchTags = async () => {
             try {
                 const fetchCard: tagType[] = await fetchData<tagType[]>(process.env.NEXT_PUBLIC_TAGS_TEST)
-                if (fetchData.length === 0) {
+                if (fetchCard.length === 0) {
                     setTagDatas(undefined)
                 } else {
                     setTagDatas(fetchCard)
