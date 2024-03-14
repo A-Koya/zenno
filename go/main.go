@@ -1,9 +1,7 @@
 package main
 
-import (
-	"github.com/A-Koya/zenno/adapter/router"
-)
+import "github.com/A-Koya/zenno/infrastrusture"
 
 func main() {
-	router.StartRouting()
+	app := infrastrusture.NewConfig()
 }
