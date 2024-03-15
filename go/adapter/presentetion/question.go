@@ -1,11 +1,9 @@
 package presentetion
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
 
-	"github.com/A-Koya/zenno/entity"
 	"github.com/A-Koya/zenno/usecase/port"
 )
 
@@ -18,14 +16,9 @@ func NewQuestionOutputPort(w http.ResponseWriter) port.QuestionOutputport {
 		w: w,
 	}
 }
-func (q *Question) Render(question *entity.Question) {
-	jsonData, err := json.Marshal(question)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
+func (q *Question) Render(json []byte) {
 	q.w.WriteHeader(http.StatusOK)
-	q.w.Write(jsonData)
+	q.w.Write(json)
 }
 func (q *Question) RenderError(err error) {
 	q.w.WriteHeader(http.StatusInternalServerError)

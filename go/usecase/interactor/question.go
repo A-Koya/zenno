@@ -25,3 +25,11 @@ func (q *Question) FindByID(ctx context.Context, userID string) {
 	}
 	q.OutputPort.Render(question)
 }
+func (q *Question) QueryByOffset(ctx context.Context, offset string) {
+	questions, err := q.QuestionRepo.QueryByOffset(ctx, offset)
+	if err != nil {
+		q.OutputPort.RenderError(err)
+		return
+	}
+	q.OutputPort.Render(questions)
+}

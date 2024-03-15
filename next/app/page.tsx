@@ -7,7 +7,9 @@ export default function Home() {
     <div className="container py-4">
       <Suspense fallback={<Loading />} >
         <div className='flex'>
-          <CardList />
+          <div>
+            <CardList />
+          </div>
           <SearchTags />
         </div>
       </Suspense>

@@ -35,3 +35,11 @@ func (q *Question) FindByID(w http.ResponseWriter, r *http.Request) {
 	inputPort := q.InputFactory(outputPort, repository)
 	inputPort.FindByID(ctx, userID)
 }
+func (q *Question) QueryByOffset(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	param := r.URL.Query()
+	outputPort := q.OutputFactory(w)
+	repository := q.RepoFactory(q.Conn)
+	inputPort := q.InputFactory(outputPort, repository)
+	inputPort.FindByID(ctx, param.Get("offset"))
+}

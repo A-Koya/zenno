@@ -2,17 +2,17 @@ package port
 
 import (
 	"context"
-
-	"github.com/A-Koya/zenno/entity"
 )
 
 type QuestionInputport interface {
 	FindByID(context.Context, string)
+	QueryByOffset(context.Context, string)
 }
 type QuestionOutputport interface {
-	Render(*entity.Question)
+	Render([]byte)
 	RenderError(error)
 }
 type QuestionRepository interface {
-	FindByID(context.Context, string) (*entity.Question, error)
+	FindByID(context.Context, string) ([]byte, error)
+	QueryByOffset(context.Context, string) ([]byte, error)
 }
