@@ -11,8 +11,9 @@ import (
 func (c *Config) Routing() *Config {
 	c.router = chi.NewRouter()
 	//ルーティングの定義
-	c.router.Get("/question", c.Models.Question.FindByID)
-	c.router.Get("/questions", c.Models.Question.QueryByOffset)
+	c.router.Get("/userFind/{userID}", c.Models.User.FindUser)
+	c.router.Get("/questionFindByID", c.Models.Question.FindByID)
+	c.router.Get("/questionQueryByOffset", c.Models.Question.QueryByOffset)
 	return c
 }
 
