@@ -1,7 +1,7 @@
 export type iconNameType = {
-    imageUrl: string,
-    name: string
+    ImageUrl: string,
+    Name: string
 }
 export type userType = {
-    id: string
+    ID: string
 } & iconNameType

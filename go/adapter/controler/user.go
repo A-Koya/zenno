@@ -2,6 +2,7 @@ package controler
 
 import (
 	"database/sql"
+	"fmt"
 	"net/http"
 
 	"github.com/A-Koya/zenno/adapter/gateway"
@@ -28,6 +29,7 @@ func NewUser(conn *sql.DB) *User {
 }
 
 func (u *User) FindUser(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("a")
 	ctx := r.Context()
 	ID := chi.URLParam(r, "userID")
 	outputPort := u.OutputFactory(w)

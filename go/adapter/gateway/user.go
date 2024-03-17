@@ -3,12 +3,11 @@ package gateway
 import (
 	"context"
 	"database/sql"
-	"encoding/json"
-	"fmt"
 	"time"
 
 	"github.com/A-Koya/zenno/entity"
 	"github.com/A-Koya/zenno/usecase/port"
+	"github.com/A-Koya/zenno/usecase/util"
 )
 
 type UserRepository struct {
@@ -27,10 +26,6 @@ func (u *UserRepository) FindUser(ctx context.Context, ID string) ([]byte, error
 		ImageUrl:   "https://github.com/shadcn.png",
 		Updated_at: time.Now(),
 	}
-	jsonData, err := json.Marshal(user)
-	if err != nil {
-		fmt.Printf("error occuerd %s", err)
-		return nil, err
-	}
-	return jsonData, nil
+	jsonData, err := util.Marshal(user)
+	return jsonData, err
 }

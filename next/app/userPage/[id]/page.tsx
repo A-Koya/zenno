@@ -10,13 +10,18 @@ import Loading from '@/app/loading';
 
 export default function Page({ params }: { params: { id: string } }) {
     const [data, setData] = useState<userType | undefined>(undefined)
+    const [loading, setLoading] = useState<boolean>(true)
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const data: userType = await fetchData<userType>(process.env.NEXT_PUBLIC_USERINFO_TEST)
+                const fetchUrl: string = process.env.NEXT_PUBLIC_USERINFO + `/${params.id}`
+                console.log(fetchUrl)
+                const data = await fetchData<userType>(fetchUrl)
                 setData(data)
+                setLoading(false)
             } catch (e) {
                 console.error(e)
+                setLoading(false)
             }
         }
         fetchUserData()
@@ -24,13 +29,15 @@ export default function Page({ params }: { params: { id: string } }) {
     return (
         <>
             {
-                data !== undefined ? (
+                loading == true ? (
+                    <Loading />
+                ) : data !== undefined ? (
                     <div className='flex justify-center mt-4 space-x-6'>
-                        <UserInfo imageUrl={data.imageUrl} name={data.name} />
+                        <UserInfo ImageUrl={data.ImageUrl} Name={data.Name} />
                         <HistoryCardList />
                     </div>
                 ) : (
-                    <Loading />
+                    <div className='font-bold text-red-500 text-lg container'>データの読み込みに失敗しました</div>
                 )
             }
         </>
