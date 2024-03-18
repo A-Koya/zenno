@@ -10,3 +10,7 @@ exec-go:
 	docker container exec -it go bash
 install-go:
 	docker compose -f docker-compose.go.yml run --rm install
+exec-sql:
+	docker exec -it postgres psql -U root -d postgres
+rm-volume:
+	docker volume rm zenno_postgres_volume

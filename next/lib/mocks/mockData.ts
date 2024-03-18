@@ -1,6 +1,5 @@
 import { questionCardType } from "../types/questionCardType";
 import { tagType } from "../types/tagType";
-import { userInfo } from "../types/userType";
 
 export const cardsMock: questionCardType[] = [
     {
@@ -45,8 +44,3 @@ export const tagsMock: tagType[] = [
         sum: 18
     },
 ]
-export const userMock: userInfo = {
-    id: "1",
-    name: "ken",
-    imageUrl: "https://github.com/shadcn.png",
-}

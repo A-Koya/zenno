@@ -15,31 +15,40 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import Image from 'next/image'
+import { postDatas } from "@/lib/functions/post"
+import { useState } from "react"
 
 const formSchema = z.object({
-  username: z.string().min(4, {
-    message: "ユーザー名は4文字以上です。"
-  }).max(12, {
-    message: "ユーザー名は12文字以内です。"
+  username: z.string().min(3, {
+    message: "ユーザー名3は文字以上です。"
+  }).max(16, {
+    message: "ユーザー名は16文字以内です。"
   }),
   password: z.string().min(8, {
     message: "パスワードは8文字以上です。"
-  }).max(20, {
-    message: "パスワードは20文字以内です。"
+  }).max(16, {
+    message: "パスワードは16文字以内です。"
   })
 })
 
 export function UserForm({ variant }: { variant: 'loginForm' | 'userAddForm' }) {
+  const [fail, setFail] = useState<boolean>(false)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: { username: '', password: '' },
     criteriaMode: 'all',
   })
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values)
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      const res: string = await postDatas<namePass>(process.env.NEXT_PUBLIC_USERCREATE, values)
+      setFail(false)
+    } catch (e) {
+      console.log(e)
+      setFail(true)
+    }
   }
   return (
-    <div className="border-2 border-gray-400 p-3 rounded-sm">
+    <div className="border-2 border-gray-400 p-3 rounded-sm max-w-[700px]">
       <div className="mb-4">
         <div className="mb-2">
           <Image
@@ -86,6 +95,18 @@ export function UserForm({ variant }: { variant: 'loginForm' | 'userAddForm' }) 
           }
         </form>
       </Form>
+      {
+        fail == true ? (
+          <div className="font-bold text-red-500 text-lg container mt-4">データの送信に失敗しました</div>
+        ) : (
+          <></>
+        )
+      }
     </div>
   )
+}
+
+export type namePass = {
+  username: string,
+  password: string
 }

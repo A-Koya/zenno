@@ -32,13 +32,13 @@ export const BaseHeader = () => {
       <div className="bg-green-200">
         <nav className="container flex space-x-8 py-2">
           <Link href="/" className='font-semibold'>
-            <div>新着</div>
+            新着
           </Link>
           <Link href="/aaa" className='font-semibold opacity-60'>
-            <div>いいね順</div>
+            いいね順
           </Link>
           <Link href="/aaa" className='font-semibold opacity-60'>
-            <div>3カ月以内</div>
+            3カ月以内
           </Link>
         </nav>
       </div>

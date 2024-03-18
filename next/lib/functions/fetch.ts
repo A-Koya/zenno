@@ -10,7 +10,7 @@ export const fetchData = async <T>(Endpoint: string | undefined, params?: QueryP
     }
     try {
         const urlWithParam: string = concatParam(Endpoint, params)
-        const response: AxiosResponse<T> = await axios.get(Endpoint)
+        const response: AxiosResponse<T> = await axios.get(urlWithParam)
         return response.data;
     } catch (error) {
         console.error('データの取得に失敗しました。', error);

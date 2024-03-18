@@ -47,26 +47,27 @@ services:
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=zenno
     tty: true
     restart: always
     user: root
     volumes:
-      - ./init:/docker-entrypoint-initdb.d
+      - ./sql/init:/docker-entrypoint-initdb.d
       - /etc/localtime:/etc/localtime:ro
+      - postgres_volume:/var/lib/postgresql/data
   pgweb:
     image: sosedoff/pgweb
     container_name: pgweb
     ports:
-      - "8081:8081"
+      - 8081:8081
     environment:
-      - DATABASE_URL=postgres://root:password@postgres:5432/testdb?sslmode=disable
-    links:
-      - postgres:postgres
+      - DATABASE_URL=postgres://root:password@postgres:5432/zenno?sslmode=disable
     restart: always
     depends_on:
       - postgres
 
 volumes:
   node_modules_v2:
+  postgres_volume:
 
 

@@ -11,7 +11,7 @@ import (
 var err error
 
 func (c *Config) DB() *Config {
-	c.Conn, err = sql.Open("postgres", "host=127.0.0.1 port=5432 user=root password=password dbname=zenno sslmode=disable")
+	c.Conn, err = sql.Open("postgres", "host=postgres port=5432 user=root password=password dbname=zenno sslmode=disable")
 	if err != nil {
 		log.Fatal("db connection failed", err)
 	}

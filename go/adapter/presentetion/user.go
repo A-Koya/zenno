@@ -22,5 +22,6 @@ func (u *User) Render(json []byte) {
 }
 func (u *User) RenderError(err error) {
 	u.w.WriteHeader(http.StatusInternalServerError)
+	fmt.Print(err)
 	fmt.Fprint(u.w, err)
 }

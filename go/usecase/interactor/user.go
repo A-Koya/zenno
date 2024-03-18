@@ -2,6 +2,7 @@ package interactor
 
 import (
 	"context"
+	"net/http"
 
 	"github.com/A-Koya/zenno/usecase/port"
 )
@@ -24,4 +25,12 @@ func (u *User) FindUser(ctx context.Context, ID string) {
 		return
 	}
 	u.OutputPort.Render(question)
+}
+func (u *User) CreateUser(ctx context.Context, r *http.Request) {
+	message, err := u.UserRepo.CreateUser(ctx, r)
+	if err != nil {
+		u.OutputPort.RenderError(err)
+		return
+	}
+	u.OutputPort.Render(message)
 }
