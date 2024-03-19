@@ -18,7 +18,7 @@ services:
         source: ./next
         target: /src
     entrypoint: npm install
-    command: axios react-feather
+    command: axios react-feather js-cookie
   develop:
     image: node_base
     volumes:

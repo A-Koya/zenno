@@ -1,11 +1,8 @@
 package entity
 
-import "time"
-
 type User struct {
-	ID         string
-	Name       string
-	Password   string
-	ImageUrl   string
-	Updated_at time.Time
+	ID       string
+	Name     string
+	Password string
+	ImageUrl string
 }

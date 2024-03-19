@@ -19,12 +19,12 @@ func NewUserInputport(outputPort port.UserOutputPort, userRepository port.UserRe
 	}
 }
 func (u *User) FindUser(ctx context.Context, ID string) {
-	question, err := u.UserRepo.FindUser(ctx, ID)
+	user, err := u.UserRepo.FindUser(ctx, ID)
 	if err != nil {
 		u.OutputPort.RenderError(err)
 		return
 	}
-	u.OutputPort.Render(question)
+	u.OutputPort.Render(user)
 }
 func (u *User) CreateUser(ctx context.Context, r *http.Request) {
 	message, err := u.UserRepo.CreateUser(ctx, r)

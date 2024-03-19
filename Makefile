@@ -8,6 +8,8 @@ exec-next:
 	docker container exec -it next bash
 exec-go:
 	docker container exec -it go bash
+install-next:
+	docker compose -f docker-compose.next.yml run --rm installer
 install-go:
 	docker compose -f docker-compose.go.yml run --rm install
 exec-sql:
