@@ -21,20 +21,24 @@ func NewUserRepository(conn *sql.DB) port.UserRepository {
 		Conn: conn,
 	}
 }
+
+type PassName struct {
+	UserName string `json:"username"`
+	Password string `json:"password"`
+}
+type Id struct {
+	UserID string `json:"userID"`
+}
+
 func (u *UserRepository) FindUser(ctx context.Context, ID string) ([]byte, error) {
 	var user entity.User
-	stmt := "SElECT id,user_name,image_url FROM users WHETE id = $1 AND is_deleted = false"
+	stmt := "SElECT id,user_name,image_url FROM users WHERE id = $1 AND is_deleted = false"
 	err := u.Conn.QueryRow(stmt, ID).Scan(&user.ID, &user.Name, &user.ImageUrl)
 	if err != nil {
 		return nil, err
 	}
 	jsonData, err := util.Marshal(user)
 	return jsonData, err
-}
-
-type PassName struct {
-	UserName string `json:"username"`
-	Password string `json:"password"`
 }
 
 func (u *UserRepository) CreateUser(ctx context.Context, r *http.Request) ([]byte, error) {
@@ -48,5 +52,8 @@ func (u *UserRepository) CreateUser(ctx context.Context, r *http.Request) ([]byt
 	if _, err := u.Conn.Exec(stmt, id, passName.UserName, passName.Password, imageUrl, false); err != nil {
 		return nil, err
 	}
-	return []byte("success"), nil
+	var resID Id
+	resID.UserID = id
+	jsonData, err := util.Marshal(resID)
+	return jsonData, err
 }
