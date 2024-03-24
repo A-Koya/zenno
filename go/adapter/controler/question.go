@@ -29,7 +29,7 @@ func NewQuestion(conn *sql.DB) Question {
 
 func (q *Question) FindByID(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
-	userID := strings.TrimPrefix(r.URL.Path, "/question/")
+	userID := strings.TrimPrefix(r.URL.Path, "/questionFindByID/")
 	outputPort := q.OutputFactory(w)
 	repository := q.RepoFactory(q.Conn)
 	inputPort := q.InputFactory(outputPort, repository)
@@ -37,9 +37,22 @@ func (q *Question) FindByID(w http.ResponseWriter, r *http.Request) {
 }
 func (q *Question) QueryByOffset(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
-	param := r.URL.Query()
 	outputPort := q.OutputFactory(w)
 	repository := q.RepoFactory(q.Conn)
 	inputPort := q.InputFactory(outputPort, repository)
-	inputPort.QueryByOffset(ctx, param.Get("offset"))
+	inputPort.QueryByOffset(ctx, r)
+}
+func (q *Question) CreateQuestion(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	outputPort := q.OutputFactory(w)
+	repository := q.RepoFactory(q.Conn)
+	inputPort := q.InputFactory(outputPort, repository)
+	inputPort.CreateQuestion(ctx, r)
+}
+func (q *Question) ReserveTags(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	outputPort := q.OutputFactory(w)
+	repository := q.RepoFactory(q.Conn)
+	inputPort := q.InputFactory(outputPort, repository)
+	inputPort.QueryByOffset(ctx, r)
 }

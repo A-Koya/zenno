@@ -1,6 +1,5 @@
 export type questionCardType = {
   id: string,
-  cardLink: string
 } & avaterDateType & mainContentsType & ReactionsType
 export type avaterDateType = {
   imageUrl: string,
@@ -10,7 +9,7 @@ export type avaterDateType = {
 export type mainContentsType = {
   title: string,
   content: string,
-  tags: string[],
+  tags: string,
 }
 export type ReactionsType = {
   good: number,

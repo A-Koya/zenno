@@ -49,7 +49,7 @@ func (u *UserRepository) CreateUser(ctx context.Context, r *http.Request) ([]byt
 	id := uuid.New().String()
 	stmt := "INSERT INTO users (id, user_name, user_password, image_url, is_deleted) VALUES ($1, $2, $3, $4, $5)"
 	imageUrl := "https://github.com/shadcn.png"
-	if _, err := u.Conn.Exec(stmt, id, passName.UserName, passName.Password, imageUrl, false); err != nil {
+	if _, err := u.Conn.ExecContext(ctx, stmt, id, passName.UserName, passName.Password, imageUrl, false); err != nil {
 		return nil, err
 	}
 	var resID Id

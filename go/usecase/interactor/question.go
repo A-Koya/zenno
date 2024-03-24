@@ -2,6 +2,7 @@ package interactor
 
 import (
 	"context"
+	"net/http"
 
 	"github.com/A-Koya/zenno/usecase/port"
 )
@@ -25,11 +26,27 @@ func (q *Question) FindByID(ctx context.Context, userID string) {
 	}
 	q.OutputPort.Render(question)
 }
-func (q *Question) QueryByOffset(ctx context.Context, offset string) {
-	questions, err := q.QuestionRepo.QueryByOffset(ctx, offset)
+func (q *Question) QueryByOffset(ctx context.Context, r *http.Request) {
+	questions, err := q.QuestionRepo.QueryByOffset(ctx, r)
 	if err != nil {
 		q.OutputPort.RenderError(err)
 		return
 	}
 	q.OutputPort.Render(questions)
+}
+func (q *Question) CreateQuestion(ctx context.Context, r *http.Request) {
+	res, err := q.QuestionRepo.CreateQuestion(ctx, r)
+	if err != nil {
+		q.OutputPort.RenderError(err)
+		return
+	}
+	q.OutputPort.Render(res)
+}
+func (q *Question) ReserveTags(ctx context.Context, r *http.Request) {
+	res, err := q.QuestionRepo.ReserveTags(ctx, r)
+	if err != nil {
+		q.OutputPort.RenderError(err)
+		return
+	}
+	q.OutputPort.Render(res)
 }

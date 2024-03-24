@@ -1,5 +1,5 @@
 import React from 'react'
-import { UserForm } from '../_component/organisms/loginform/UserForm'
+import { UserForm } from '../_component/organisms/userform/UserForm'
 
 export default function Page() {
     return (

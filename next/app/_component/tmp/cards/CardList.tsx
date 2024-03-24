@@ -11,7 +11,8 @@ export const CardList = () => {
   useEffect(() => {
     const fetchCard = async () => {
       try {
-        const fetchCard: questionCardType[] = await fetchData<questionCardType[]>(process.env.NEXT_PUBLIC_CARDS_TEST)
+        const fetchUrl: string = process.env.NEXT_PUBLIC_QUESTIONS + `?offset=${0}`
+        const fetchCard: questionCardType[] = await fetchData<questionCardType[]>(fetchUrl)
         if (fetchCard.length === 0) {
           setCardDatas(undefined)
         } else {

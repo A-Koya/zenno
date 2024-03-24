@@ -29,19 +29,6 @@ export const BaseHeader = () => {
           <Button variant="outline" className="font-semibold" onClick={() => router.push('/userAdd')}>新規会員登録</Button>
         </nav>
       </div>
-      <div className="bg-green-200">
-        <nav className="container flex space-x-8 py-2">
-          <Link href="/" className='font-semibold'>
-            新着
-          </Link>
-          <Link href="/aaa" className='font-semibold opacity-60'>
-            いいね順
-          </Link>
-          <Link href="/aaa" className='font-semibold opacity-60'>
-            3カ月以内
-          </Link>
-        </nav>
-      </div>
     </header>
   )
 }
