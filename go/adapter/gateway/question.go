@@ -196,3 +196,44 @@ func (q *QuestionRepository) ReserveTags(ctx context.Context, r *http.Request) (
 	jsonData, err := util.Marshal(tags)
 	return jsonData, err
 }
+
+type answer struct {
+	ID        string `json:"id"`
+	ImageUrl  string `json:"image_url"`
+	UserName  string `json:"user_name"`
+	Content   string `json:"content"`
+	UpdatedAt string `json:"updated_at"`
+	Good      int    `json:"good"`
+}
+
+func (q *QuestionRepository) QueryAwnser(ctx context.Context, r *http.Request) ([]byte, error) {
+	ID := strings.TrimPrefix(r.URL.Path, "/answerQueryByID/")
+	fmt.Println(ID)
+	stmt := `
+		SELECT a.id,users.image_url,users.user_name,a.updated_at,a.content,COALESCE(good.good, 0) AS good
+		FROM answers a
+		LEFT JOIN (
+			SELECT rated,COUNT(*) AS good
+			FROM answer_good
+			GROUP BY rated
+		) good ON a.id = good.rated 
+		LEFT JOIN users ON a.author_id = users.id
+		WHERE a.question_id = $1 AND a.is_deleted = false
+		ORDER BY good.good DESC;
+	`
+	rows, err := q.Conn.QueryContext(ctx, stmt, ID)
+	if err != nil {
+		return nil, err
+	}
+	var answers []answer
+	for rows.Next() {
+		var a answer
+		err := rows.Scan(&a.ID, &a.ImageUrl, &a.UserName, &a.UpdatedAt, &a.Content, &a.Good)
+		if err != nil {
+			return nil, err
+		}
+		answers = append(answers, a)
+	}
+	jsonData, err := util.Marshal(answers)
+	return jsonData, err
+}

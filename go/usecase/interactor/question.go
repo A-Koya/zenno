@@ -50,3 +50,11 @@ func (q *Question) ReserveTags(ctx context.Context, r *http.Request) {
 	}
 	q.OutputPort.Render(res)
 }
+func (q *Question) QueryAwnser(ctx context.Context, r *http.Request) {
+	res, err := q.QuestionRepo.QueryAwnser(ctx, r)
+	if err != nil {
+		q.OutputPort.RenderError(err)
+		return
+	}
+	q.OutputPort.Render(res)
+}

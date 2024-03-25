@@ -13,3 +13,5 @@ require (
 	github.com/form3tech-oss/jwt-go v3.2.5+incompatible
 	github.com/google/uuid v1.6.0
 )
+
+require github.com/joho/godotenv v1.5.1

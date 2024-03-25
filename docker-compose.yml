@@ -39,6 +39,8 @@ services:
     stdin_open: true
     environment:
       - TZ=Asia/Tokyo
+    env_file:
+      - ./env/go/.env
   postgres:
     image: postgres
     container_name: postgres

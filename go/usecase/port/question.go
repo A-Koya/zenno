@@ -10,6 +10,7 @@ type QuestionInputport interface {
 	QueryByOffset(context.Context, *http.Request)
 	CreateQuestion(context.Context, *http.Request)
 	ReserveTags(context.Context, *http.Request)
+	QueryAwnser(context.Context, *http.Request)
 }
 type QuestionOutputport interface {
 	Render([]byte)
@@ -20,4 +21,5 @@ type QuestionRepository interface {
 	QueryByOffset(context.Context, *http.Request) ([]byte, error)
 	CreateQuestion(context.Context, *http.Request) ([]byte, error)
 	ReserveTags(context.Context, *http.Request) ([]byte, error)
+	QueryAwnser(context.Context, *http.Request) ([]byte, error)
 }

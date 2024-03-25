@@ -56,3 +56,10 @@ func (q *Question) ReserveTags(w http.ResponseWriter, r *http.Request) {
 	inputPort := q.InputFactory(outputPort, repository)
 	inputPort.ReserveTags(ctx, r)
 }
+func (q *Question) QueryAwnser(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	outputPort := q.OutputFactory(w)
+	repository := q.RepoFactory(q.Conn)
+	inputPort := q.InputFactory(outputPort, repository)
+	inputPort.QueryAwnser(ctx, r)
+}

@@ -1,6 +1,7 @@
 'use client'
 
 import { QuestionCard } from '@/app/_component/organisms/QuestionCard/QuestionCard'
+import { AnswerCardList } from '@/app/_component/tmp/cards/AnswerCardList'
 import Loading from '@/app/loading'
 import { fetchData } from '@/lib/functions/fetch'
 import { questionCardType } from '@/lib/types/questionCardType'
@@ -31,7 +32,10 @@ export default function ({ params }: { params: { id: string } }) {
                 ) : data == undefined ? (
                     <div className='text-lg text-red-400 font-bold'>データの読み込みに失敗しました</div>
                 ) : (
-                    <QuestionCard {...data} />
+                    <>
+                        <QuestionCard {...data} />
+                        <AnswerCardList />
+                    </>
                 )
             }
         </div>
