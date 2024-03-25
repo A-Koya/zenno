@@ -18,8 +18,8 @@ type User struct {
 	Conn          *sql.DB
 }
 
-func NewUser(conn *sql.DB) *User {
-	return &User{
+func NewUser(conn *sql.DB) User {
+	return User{
 		OutputFactory: presentetion.NewUserOutputport,
 		InputFactory:  interactor.NewUserInputport,
 		RepoFactory:   gateway.NewUserRepository,

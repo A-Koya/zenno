@@ -9,6 +9,7 @@ import (
 type Models struct {
 	Question controler.Question
 	User     controler.User
+	Auth     controler.Auth
 }
 
 func NewModels() *Models {
@@ -18,5 +19,6 @@ func NewModels() *Models {
 func (m *Models) SetsModels(conn *sql.DB) {
 	//モデルを登録
 	m.Question = controler.NewQuestion(conn)
-	m.User = *controler.NewUser(conn)
+	m.User = controler.NewUser(conn)
+	m.Auth = controler.NewAuth(conn)
 }

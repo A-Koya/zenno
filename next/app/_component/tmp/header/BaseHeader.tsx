@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { SearchWithButton } from '@/app/_component/molecules/SearchWithButton'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
+import { Edit } from 'react-feather'
 
 
 export const BaseHeader = () => {
@@ -27,6 +28,7 @@ export const BaseHeader = () => {
           <SearchWithButton />
           <Button variant="outline" className="font-semibold" onClick={() => router.push('/login')}>ログイン</Button>
           <Button variant="outline" className="font-semibold" onClick={() => router.push('/userAdd')}>新規会員登録</Button>
+          <Link className='bg-blue-300 p-2 rounded-md' href={'/createQuestion'}><Edit /></Link>
         </nav>
       </div>
     </header>
