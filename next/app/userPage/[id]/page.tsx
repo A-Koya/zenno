@@ -15,7 +15,6 @@ export default function Page({ params }: { params: { id: string } }) {
         const fetchUserData = async () => {
             try {
                 const fetchUrl: string = process.env.NEXT_PUBLIC_USERINFO + `/${params.id}`
-                console.log(fetchUrl)
                 const data = await fetchData<userType>(fetchUrl)
                 setData(data)
                 setLoading(false)

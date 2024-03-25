@@ -35,7 +35,6 @@ export default function page() {
         const post = async (json: postData) => {
             try {
                 const res = await postDatas<postData>(process.env.NEXT_PUBLIC_CREATE_QUESTION, json)
-                console.log(res)
                 setIsError(false)
             } catch (e) {
                 console.log(e)
@@ -43,7 +42,6 @@ export default function page() {
             }
         }
         if (title !== "" && content !== "") {
-            console.log(json)
             post(json)
             setContent('')
             setTitle('')

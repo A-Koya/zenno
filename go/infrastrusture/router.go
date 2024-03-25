@@ -23,9 +23,9 @@ func (c *Config) Routing() *Config {
 	c.router.Get("/userInfo/{userID}", c.Models.User.FindUser)
 	c.router.Get("/questionFindByID/{questionID}", c.Models.Question.FindByID)
 	c.router.Get("/questionQueryByOffset", c.Models.Question.QueryByOffset)
+	c.router.Get("/tags", c.Models.Question.ReserveTags)
 	c.router.Post("/user", c.Models.User.CreateUser)
 	c.router.Post("/createQuestion", c.Models.Question.CreateQuestion)
-	c.router.Post("/tags", c.Models.Question.ReserveTags)
 	return c
 }
 

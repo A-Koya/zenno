@@ -13,7 +13,6 @@ export default function ({ params }: { params: { id: string } }) {
         const fetchUserData = async () => {
             try {
                 const fetchUrl: string = process.env.NEXT_PUBLIC_FIND_QUESTION + `/${params.id}`
-                console.log(fetchUrl)
                 const data = await fetchData<questionCardType>(fetchUrl)
                 setData(data)
                 setLoading(false)

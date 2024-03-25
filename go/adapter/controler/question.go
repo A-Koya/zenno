@@ -54,5 +54,5 @@ func (q *Question) ReserveTags(w http.ResponseWriter, r *http.Request) {
 	outputPort := q.OutputFactory(w)
 	repository := q.RepoFactory(q.Conn)
 	inputPort := q.InputFactory(outputPort, repository)
-	inputPort.QueryByOffset(ctx, r)
+	inputPort.ReserveTags(ctx, r)
 }

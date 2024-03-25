@@ -25,6 +25,8 @@ export const concatParam = (Endpoint: string, params?: QueryParams[]): string =>
                 .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value.toString())}`)
                 .join('&')
             )
+            .join('&')
+        console.log(`${Endpoint}?${queryString}`)
         return `${Endpoint}?${queryString}`;
     } else {
         return Endpoint

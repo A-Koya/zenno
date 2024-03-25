@@ -27,7 +27,7 @@ func NewQuestionRepository(conn *sql.DB) port.QuestionRepository {
 func (q *QuestionRepository) FindByID(ctx context.Context, ID string) ([]byte, error) {
 	var question entity.Question
 	stmt := `
-		SELECT q.id,users.image_url,users.user_name,q.updated_at,q.title,q.content,COALESCE(good.good, 0) AS good,COALESCE(post.post,0) AS post,COALESCE(tags.tag_list, '{}') AS tag_list
+		SELECT q.id,users.image_url,users.user_name,q.updated_at,q.title,LEFT(q.content,60),COALESCE(good.good, 0) AS good,COALESCE(post.post,0) AS post,COALESCE(tags.tag_list, '{}') AS tag_list
 		FROM questions q
 		LEFT JOIN users ON q.author_id = users.id 
 		LEFT JOIN (
@@ -62,7 +62,7 @@ func (q *QuestionRepository) FindByID(ctx context.Context, ID string) ([]byte, e
 func (q *QuestionRepository) QueryByOffset(ctx context.Context, r *http.Request) ([]byte, error) {
 	param := r.URL.Query()
 	offset := param.Get("offset")
-	fmt.Println(offset)
+	strict := param.Get("strict")
 	stmt := `
 		SELECT q.id,users.image_url,users.user_name,q.updated_at,q.title,q.content,COALESCE(good.good, 0) AS good,COALESCE(post.post,0) AS post,COALESCE(tags.tag_list, '{}') AS tag_list
 		FROM questions q
@@ -85,12 +85,16 @@ func (q *QuestionRepository) QueryByOffset(ctx context.Context, r *http.Request)
 			JOIN tags ON q.id = tags.question_id
 			GROUP BY q.id
 		) tags ON q.id = tags.K
-		WHERE q.is_deleted = false
+		WHERE q.is_deleted = false 
+			AND 
+		(q.title LIKE '%' || $2 || '%' 
+			OR 
+		q.content LIKE '%' || $2 || '%')
 		ORDER BY good DESC
 		OFFSET $1
 		LIMIT 10;
 	`
-	rows, err := q.Conn.QueryContext(ctx, stmt, offset)
+	rows, err := q.Conn.QueryContext(ctx, stmt, offset, strict)
 	if err != nil {
 		return nil, err
 	}
@@ -165,16 +169,16 @@ func (q *QuestionRepository) CreateQuestion(ctx context.Context, r *http.Request
 }
 
 type resTag struct {
-	Name string `json:"name"`
 	Sum  string `json:"sum"`
+	Name string `json:"name"`
 }
 
 func (q *QuestionRepository) ReserveTags(ctx context.Context, r *http.Request) ([]byte, error) {
 	stmt := `
-		SELECT COUNT(id) AS used,tag_name
+		SELECT COUNT(*) AS sum,tag_name 
 		FROM tags
 		GROUP BY tag_name
-		ORDER BY used DESC
+		ORDER BY sum DESC
 		LIMIT 20;
 	`
 	rows, err := q.Conn.QueryContext(ctx, stmt)
@@ -184,7 +188,7 @@ func (q *QuestionRepository) ReserveTags(ctx context.Context, r *http.Request) (
 	var tags []resTag
 	for rows.Next() {
 		var tag resTag
-		if err := rows.Scan(&tag); err != nil {
+		if err := rows.Scan(&tag.Sum, &tag.Name); err != nil {
 			return nil, err
 		}
 		tags = append(tags, tag)

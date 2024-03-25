@@ -18,7 +18,7 @@ export function SearchTags() {
     useEffect(() => {
         const fetchTags = async () => {
             try {
-                const fetchCard: tagType[] = await fetchData<tagType[]>(process.env.NEXT_PUBLIC_TAGS_TEST)
+                const fetchCard: tagType[] = await fetchData<tagType[]>(process.env.NEXT_PUBLIC_TAGS)
                 if (fetchCard.length === 0) {
                     setTagDatas(undefined)
                 } else {

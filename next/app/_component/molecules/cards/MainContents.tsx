@@ -2,7 +2,6 @@ import { mainContentsType } from '../../../../lib/types/questionCardType';
 import { Suspense } from 'react';
 export const MainContents = ({ title, content, tags }: mainContentsType) => {
   const tagsArray: string[] = tags.substring(1, tags.length - 1).split(',')
-  console.log(tagsArray)
   return (
     <Suspense fallback={<div>loading</div>}>
       <div className="flex flex-col space-y-2">
